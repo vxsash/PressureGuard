@@ -1,3 +1,14 @@
+import json
+import urllib.request
+ESP32_URL = "http://192.168.4.1/data"
+
+def get_esp32_data():
+    try:
+        with urllib.request.urlopen(ESP32_URL, timeout=2) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except:
+        return None
+        
 """
 PressureGuard — لوحة المتابعة المركزية (نموذج أولي بيانات افتراضية)
 
